@@ -1,0 +1,33 @@
+{
+	"name": "typescript-microfrontend",
+	"version": "1.0.0",
+	"author": {
+		"name": "Russell Canfield",
+		"email": "rcanfield86@gmail.com"
+	},
+	"scripts": {
+		"start": "webpack serve"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "7.15.8",
+		"@babel/plugin-transform-runtime": "7.15.8",
+		"@babel/preset-env": "7.15.8",
+		"@babel/preset-react": "7.14.5",
+		"@babel/preset-typescript": "7.10.4",
+		"@types/react": "18.2.21",
+		"@types/react-dom": "18.2.7",
+		"babel-loader": "8.2.2",
+		"css-loader": "6.3.0",
+		"html-webpack-plugin": "5.3.2",
+		"style-loader": "3.3.0",
+		"typescript": "5.2.2",
+		"webpack": "5.88.1",
+		"webpack-cli": "4.10.0",
+		"webpack-dev-server": "4.15.1"
+	},
+	"dependencies": {
+		"react": "18.2.0",
+		"react-dom": "18.2.0"
+	}
+}
