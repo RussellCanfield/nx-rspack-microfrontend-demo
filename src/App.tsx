@@ -1,7 +1,12 @@
-import "./index.css";
+import styles from "./App.module.css";
+import Navbar from "./features/Navbar";
 
 const App = () => {
-	return <div>My App!</div>;
+	return (
+		<>
+			<Navbar />
+		</>
+	);
 };
 
 export default App;

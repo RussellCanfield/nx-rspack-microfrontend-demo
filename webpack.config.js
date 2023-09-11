@@ -1,5 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
 	entry: {
@@ -7,6 +7,9 @@ module.exports = {
 	},
 	output: {
 		publicPath: "auto",
+		filename: "[name].[contenthash:8].js",
+		chunkFilename: "[name].[contenthash:8].chunk.js",
+		assetModuleFilename: "[name].[hash][ext][query]",
 	},
 	mode: "development",
 	resolve: {
@@ -25,8 +28,24 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(css|s[ac]ss)$/i,
-				use: ["style-loader", "css-loader"],
+				test: /(?<!\.module)\.(css|s[ac]ss)$/i,
+				use: [MiniCssExtractPlugin.loader, "css-loader"],
+			},
+			{
+				test: /\.module.(css|s[ac]ss)$/i,
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: "css-loader",
+						options: {
+							modules: {
+								localIdentName:
+									"[path][name]__[local]--[hash:base64:5]",
+								exportLocalsConvention: "camelCase",
+							},
+						},
+					},
+				],
 			},
 			{
 				test: /\.(ts|tsx|js|jsx)$/,
@@ -38,6 +57,9 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new MiniCssExtractPlugin({
+			filename: "[name].[contenthash:8].css",
+		}),
 		new HtmlWebPackPlugin({
 			template: "./src/index.html",
 		}),

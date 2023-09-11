@@ -1,10 +1,14 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
+    margin: unset;
+    background-color: var(--color-background);
 }
 
-.container {
-  font-size: 3rem;
-  margin: auto;
-  max-width: 800px;
-  margin-top: 20px;
+body.light-mode {
+    --color-text: black;
+    --color-background: white;
+}
+
+body.dark-mode  {
+    --color-text: white;
+    --color-background: #2f2f2f;
 }
