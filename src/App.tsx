@@ -1,12 +1,15 @@
-import styles from "./App.module.css";
-import Navbar from "./features/Navbar";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Home } from "./features/Home";
+
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <Home />,
+	},
+]);
 
 const App = () => {
-	return (
-		<>
-			<Navbar />
-		</>
-	);
+	return <RouterProvider router={router} />;
 };
 
 export default App;

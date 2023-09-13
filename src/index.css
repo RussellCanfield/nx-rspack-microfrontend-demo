@@ -4,11 +4,15 @@ body {
 }
 
 body.light-mode {
-    --color-text: black;
-    --color-background: white;
+    --color-text: #000;
+    --color-text-dark: #070606;
+    --color-text-light: #757575;
+    --color-background: #fff;
 }
 
 body.dark-mode  {
-    --color-text: white;
-    --color-background: #2f2f2f;
+    --color-text: #fff;
+    --color-text-light: #eee;
+    --color-text-dark: #adadad;
+    --color-background: #070606;
 }

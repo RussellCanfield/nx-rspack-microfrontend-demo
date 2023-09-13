@@ -1,0 +1,17 @@
+.product-carousel {
+    display: flex;
+    list-style: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+  
+    & .product-carousel__item {
+        flex-shrink: 0;
+        width: 512px;
+        height: 512px;
+        scroll-snap-align: start;
+        padding: 0.5rem;
+        height: 100%;
+        margin-bottom: 0.2rem;
+    }
+}

@@ -1,0 +1,16 @@
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    height: 512px;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: color-mix(in srgb, var(--color-text-dark) 10%, transparent) 2px 2px 8px 2px;
+
+    .product-card__image {
+        width: 100%;
+        overflow: hidden;
+        object-fit: contain;
+    }
+}

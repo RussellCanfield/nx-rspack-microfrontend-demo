@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
 	entry: {
@@ -29,18 +30,18 @@ module.exports = {
 		rules: [
 			{
 				test: /(?<!\.module)\.(css|s[ac]ss)$/i,
-				use: [MiniCssExtractPlugin.loader, "css-loader"],
+				use: ["style-loader", "css-loader"],
 			},
 			{
 				test: /\.module.(css|s[ac]ss)$/i,
 				use: [
-					MiniCssExtractPlugin.loader,
+					"style-loader",
 					{
 						loader: "css-loader",
 						options: {
 							modules: {
 								localIdentName:
-									"[path][name]__[local]--[hash:base64:5]",
+									"[name]__[local]--[hash:base64:5]",
 								exportLocalsConvention: "camelCase",
 							},
 						},
@@ -57,11 +58,14 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new CopyPlugin({
+			patterns: [{ from: "public/assets", to: "assets" }],
+		}),
 		new MiniCssExtractPlugin({
 			filename: "[name].[contenthash:8].css",
 		}),
 		new HtmlWebPackPlugin({
-			template: "./src/index.html",
+			template: "./public/index.html",
 		}),
 	],
 };

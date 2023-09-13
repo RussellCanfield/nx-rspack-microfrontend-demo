@@ -1,0 +1,23 @@
+.product-search {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+
+    .product-search__wrapper {
+        min-width: 256px;
+        margin-bottom: 10px;
+
+        .product-search__wrapper__input {
+            min-width: 256px;
+            padding: 10px;
+            background-color: var(--color-background);
+        }
+
+        .product-search__wrapper__icon {
+            padding: 10px;
+            width: 1.2rem;
+            position: absolute;
+            margin-left: -35px;
+        }
+    }
+}
