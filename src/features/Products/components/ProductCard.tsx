@@ -1,23 +1,17 @@
-import { useAtom } from "jotai";
 import { type Product } from "../../../types/Products";
 import styles from "./ProductCard.module.css";
-import { cartAtom } from "../../../store";
+import { PropsWithChildren } from "react";
 
-const ProductCard = ({ product }: { product: Product }) => {
-	const [, setCart] = useAtom(cartAtom);
+export type ProductCardProps = {
+	product: Product;
+} & PropsWithChildren;
 
+const ProductCard = ({ product, children }: ProductCardProps) => {
 	const formatAsCurrency = (price: number) => {
 		return new Intl.NumberFormat(navigator.language, {
 			style: "currency",
 			currency: "USD",
 		}).format(price);
-	};
-
-	const addToCart = () => {
-		setCart((cart) => {
-			cart.products.push(product);
-			return cart;
-		});
 	};
 
 	return (
@@ -32,9 +26,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 				<p className={styles["product-card__details__price"]}>
 					{formatAsCurrency(product.price)}
 				</p>
-				<button type="button" role="button" onClick={addToCart}>
-					Add to Cart
-				</button>
+				{children}
 			</div>
 		</div>
 	);
