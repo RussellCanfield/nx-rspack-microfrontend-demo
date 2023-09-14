@@ -25,6 +25,7 @@ body.light-mode {
     --color-text-light: #757575;
     --color-background: #fff;
     --color-background-light: #d9d9d9;
+    --color-accent: #404d7d;
 }
 
 body.dark-mode  {
@@ -33,4 +34,5 @@ body.dark-mode  {
     --color-text-dark: #adadad;
     --color-background: #070606;
     --color-background-light: #211f1f;
+    --color-accent: #404d7d;
 }
