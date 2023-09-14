@@ -1,0 +1,11 @@
+.product-search {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding: 1rem;
+
+    .product-search-results {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+}

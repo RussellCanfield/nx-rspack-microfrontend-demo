@@ -14,23 +14,6 @@
         display: flex;
         margin-left: 0.5rem;
         font-size: 1.5rem;
-
-        a {
-            flex: 0 1 0px;
-            color: var(--color-text-dark);
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: var(--color-text-dark);
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: var(--color-text-light);
-            background-position: 0 100%;
-        }
-
     }
 
     .nav-bar_title {

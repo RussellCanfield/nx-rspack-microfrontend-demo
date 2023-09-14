@@ -3,9 +3,10 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-    height: 512px;
+    height: 400px;
     gap: 0.5rem;
     border-radius: 0.5rem;
+    color: var(--color-text);
     box-shadow: color-mix(in srgb, var(--color-text-dark) 10%, transparent) 2px 2px 8px 2px;
 
     .product-card__image {

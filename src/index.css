@@ -1,6 +1,22 @@
 body {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
     margin: unset;
     background-color: var(--color-background);
+}
+
+a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-text-light);
+    background-position: 0 100%;
 }
 
 body.light-mode {
@@ -8,6 +24,7 @@ body.light-mode {
     --color-text-dark: #070606;
     --color-text-light: #757575;
     --color-background: #fff;
+    --color-background-light: #d9d9d9;
 }
 
 body.dark-mode  {
@@ -15,4 +32,5 @@ body.dark-mode  {
     --color-text-light: #eee;
     --color-text-dark: #adadad;
     --color-background: #070606;
+    --color-background-light: #211f1f;
 }

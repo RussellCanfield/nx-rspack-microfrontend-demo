@@ -1,0 +1,43 @@
+.product-hero {
+    --hero-image-height: 768px;
+    height: var(--hero-image-height);
+
+    .product-hero__wrapper {
+        position: absolute;
+        height: var(--hero-image-height);
+        width: 100%;
+
+        .product-hero__wrapper__text__container {
+            position: absolute;
+            top: 35%;
+            left: 0;
+            margin-left: 2rem;
+            font-size: 2rem;
+            color: #fff;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid rgba(10, 10, 10, 0.2);
+            background-color: rgba(10, 10, 10, 0.5);
+
+            .product-hero__wrapper__text__container__caption {
+                font-size: 1.2rem;
+            }
+        }
+
+        .product-hero__wrapper__image {
+            aspect-ratio: auto 3/2;
+            height: 100%;
+            width: 100%;
+            object-fit: fill;
+        }
+    
+        .product-hero__wrapper__image__shirt {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            right: 0;
+            top: 20%;
+            margin-right: 2rem;
+        }
+    }
+}

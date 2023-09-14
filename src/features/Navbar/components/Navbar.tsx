@@ -1,6 +1,7 @@
 import { useLayoutEffect, useState } from "React";
 import styles from "./Navbar.module.css";
 import { SunIcon, MoonIcon } from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
 
 type Theme = "light" | "dark";
 
@@ -48,10 +49,12 @@ const Navbar = () => {
 
 	return (
 		<div className={styles["nav-bar"]}>
-			<div className={styles["nav-bar_title"]}>Elite T-Shirts</div>
+			<div className={styles["nav-bar_title"]}>
+				<Link to="/">Elite T-Shirts</Link>
+			</div>
 			<div className={styles["nav-bar_links"]}>
-				<a href="/products">Products</a>
-				<a href="/cart">Cart</a>
+				<Link to="/products">Products</Link>
+				<Link to="/cart">Cart</Link>
 			</div>
 			<div className={styles["nav-bar_theme"]}>{InactiveThemeIcon()}</div>
 		</div>
