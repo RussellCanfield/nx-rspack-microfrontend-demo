@@ -1,8 +1,3 @@
-import { atom } from "jotai";
-import { Cart } from "../types/Cart";
-
-const cartAtom = atom<Cart>({
-	products: [],
-});
+import { cartAtom } from "../features/Cart/store";
 
 export { cartAtom };

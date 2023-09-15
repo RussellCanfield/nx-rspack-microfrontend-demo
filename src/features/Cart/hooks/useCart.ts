@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import { cartAtom } from "../../../store";
+import { cartAtom } from "../store";
 import { type Product } from "../../../types/Products";
 
 const useCart = () => {
