@@ -1,7 +1,7 @@
 import styles from "./Carousel.module.css";
 import { ProductSaleData } from "../../../data/ProductData";
 import ProductCard from "./ProductCard";
-import useCart from "../../../hooks/useCart";
+import { useCart } from "../../../hooks";
 
 const ProductCarousel = () => {
 	const { addToCart } = useCart();

@@ -1,6 +1,6 @@
 import { ProductCard } from "../../Products";
 import styles from "./Cart.module.css";
-import useCart from "../../../hooks/useCart";
+import useCart from "../hooks/useCart";
 
 const Cart = () => {
 	const { cart, removeFromCart } = useCart();
@@ -10,7 +10,7 @@ const Cart = () => {
 	}, 0);
 
 	if (!cart.products.length) {
-		return <div>Sorry your cart is currently empty. :(</div>;
+		return <h3>Sorry your cart is currently empty.</h3>;
 	}
 
 	return (

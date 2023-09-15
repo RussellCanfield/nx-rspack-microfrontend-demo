@@ -3,7 +3,7 @@ import { searchTextAtom } from "../store";
 import ProductData from "../../../data/ProductData";
 import ProductCard from "./ProductCard";
 import styles from "./ProductSearchResults.module.css";
-import useCart from "../../../hooks/useCart";
+import { useCart } from "../../../hooks";
 
 const ProductSearchResults = () => {
 	const [searchText] = useAtom(searchTextAtom);
