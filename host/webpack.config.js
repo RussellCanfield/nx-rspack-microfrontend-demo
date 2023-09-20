@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 module.exports = {
 	entry: {
@@ -66,6 +67,12 @@ module.exports = {
 		}),
 		new HtmlWebPackPlugin({
 			template: "./public/index.html",
+		}),
+		new ModuleFederationPlugin({
+			name: "host",
+			remotes: {
+				products: "products@http://localhost:3001/remoteEntry.js",
+			},
 		}),
 	],
 };

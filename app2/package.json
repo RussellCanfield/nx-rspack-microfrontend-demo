@@ -1,12 +1,12 @@
 {
-	"name": "pnpm-monorepo",
+	"name": "pnpm-monorepo_app2",
 	"version": "1.0.0",
 	"author": {
 		"name": "Russell Canfield",
 		"email": "rcanfield86@gmail.com"
 	},
 	"scripts": {
-		"start": "pnpm --filter pnpm-monorepo_* --parallel run start"
+		"start": "webpack serve"
 	},
 	"license": "MIT",
 	"devDependencies": {

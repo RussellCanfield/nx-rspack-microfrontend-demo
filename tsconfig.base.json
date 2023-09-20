@@ -19,8 +19,11 @@
     "noUnusedParameters": true,
     "incremental": true,
     "noFallthroughCasesInSwitch": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "paths": {
+      "products/*": ["./app2/src/features/Products/components/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "files": [],
   "exclude": ["node_modules", "dist"]
 }
