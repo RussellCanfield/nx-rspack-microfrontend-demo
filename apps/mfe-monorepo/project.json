@@ -1,0 +1,92 @@
+{
+  "name": "mfe-monorepo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mfe-monorepo/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/mfe-monorepo",
+        "index": "apps/mfe-monorepo/src/index.html",
+        "baseHref": "/",
+        "main": "apps/mfe-monorepo/src/index.tsx",
+        "tsConfig": "apps/mfe-monorepo/tsconfig.app.json",
+        "assets": [
+          "apps/mfe-monorepo/src/favicon.ico",
+          "apps/mfe-monorepo/src/assets"
+        ],
+        "styles": ["apps/mfe-monorepo/src/index.css"],
+        "scripts": [],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/mfe-monorepo/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/mfe-monorepo/src/environments/environment.ts",
+              "with": "apps/mfe-monorepo/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "mfe-monorepo:build",
+        "hmr": true,
+        "devRemotes": ["hero"]
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "mfe-monorepo:build:development"
+        },
+        "production": {
+          "buildTarget": "mfe-monorepo:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mfe-monorepo/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/mfe-monorepo/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["hero"]
+}

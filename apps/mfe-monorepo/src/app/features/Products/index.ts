@@ -4,7 +4,6 @@ import ProductSearch from "./components/ProductSearch";
 import ProductCard from "./components/ProductCard";
 import ProductSearchResults from "./components/ProductSearchResults";
 import Products from "./components/Products";
-import ProductHero from "./components/ProductHero";
 
 export {
 	Products,
@@ -13,5 +12,4 @@ export {
 	ProductSearch,
 	ProductCard,
 	ProductSearchResults,
-	ProductHero,
 };
