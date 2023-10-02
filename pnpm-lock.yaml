@@ -8,6 +8,9 @@ dependencies:
   '@heroicons/react':
     specifier: 2.0.18
     version: 2.0.18(react@18.2.0)
+  '@module-federation/utilities':
+    specifier: 3.0.0
+    version: link:../../../module-federation/universe/dist/packages/utilities
   '@swc/helpers':
     specifier: ~0.5.0
     version: 0.5.2
