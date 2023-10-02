@@ -10,8 +10,20 @@ module.exports = composePlugins(
   withReact(),
   withModuleFederation({ ...moduleFederationConfig }),
   (config) => {
-    // Update the webpack config as needed here.
-    // e.g. `config.plugins.push(new MyPlugin())`
+    // config.plugins.forEach((p) => {
+    //   if (p.constructor.name === 'ModuleFederationPlugin') {
+    //     //Temporary workaround - https://github.com/nrwl/nx/issues/16983
+    //     delete p._options.library;
+    //   }
+    // });
+
+    // config.experiments = { outputModule: false };
+
+    // config.output = {
+    //   ...config.output,
+    //   scriptType: 'text/javascript',
+    // };
+
     return config;
   }
 );
