@@ -1,6 +1,7 @@
 const { composePlugins, withNx } = require('@nx/webpack');
 const { withReact } = require('@nx/react');
 const { withModuleFederation } = require('@nx/react/module-federation');
+const { FederatedTypesPlugin } = require('@module-federation/typescript');
 
 const moduleFederationConfig = require('./module-federation.config');
 
@@ -14,6 +15,18 @@ module.exports = composePlugins(
       ...config.resolve.fallback,
       path: false,
     };
+
+    config.plugins.push(
+      new FederatedTypesPlugin({
+        federationConfig: {
+          ...moduleFederationConfig,
+          filename: 'remoteEntry.js',
+          remotes: {
+            hero: 'hero@http://localhost:3001/remoteEntry.js',
+          },
+        },
+      })
+    );
 
     // config.plugins.forEach((p) => {
     //   if (p.constructor.name === 'ModuleFederationPlugin') {

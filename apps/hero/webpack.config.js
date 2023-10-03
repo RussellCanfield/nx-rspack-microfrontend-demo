@@ -1,6 +1,7 @@
 const { composePlugins, withNx } = require('@nx/webpack');
 const { withReact } = require('@nx/react');
 const { withModuleFederation } = require('@nx/react/module-federation');
+const { FederatedTypesPlugin } = require('@module-federation/typescript');
 
 const moduleFederationConfig = require('./module-federation.config');
 
@@ -10,6 +11,20 @@ module.exports = composePlugins(
   withReact(),
   withModuleFederation({ ...moduleFederationConfig }),
   (config) => {
+    config.plugins.push(
+      new FederatedTypesPlugin({
+        federationConfig: {
+          ...moduleFederationConfig,
+          filename: 'remoteEntry.js',
+        },
+      })
+    );
+
+    config.devServer = {
+      ...config.devServer,
+      static: config.output.path,
+    };
+
     // config.plugins.forEach((p) => {
     //   if (p.constructor.name === 'ModuleFederationPlugin') {
     //     //Temporary workaround - https://github.com/nrwl/nx/issues/16983
