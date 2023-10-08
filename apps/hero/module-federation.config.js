@@ -1,7 +1,5 @@
 // @ts-check
 
-const coreLibraries = new Set(['react', 'react-dom']);
-
 /**
  * @type {import('@nrwl/devkit').ModuleFederationConfig}
  **/
