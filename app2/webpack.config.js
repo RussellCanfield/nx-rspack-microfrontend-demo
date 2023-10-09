@@ -2,8 +2,10 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { FederatedTypesPlugin } = require("@module-federation/typescript");
+const path = require("path");
 
-module.exports = {
+const config = {
 	entry: {
 		app: "./src/index.tsx",
 	},
@@ -12,6 +14,7 @@ module.exports = {
 		filename: "[name].[contenthash:8].js",
 		chunkFilename: "[name].[contenthash:8].chunk.js",
 		assetModuleFilename: "[name].[hash][ext][query]",
+		clean: true,
 	},
 	mode: "development",
 	resolve: {
@@ -19,7 +22,10 @@ module.exports = {
 	},
 	devServer: {
 		port: 3001,
-		historyApiFallback: true,
+		historyApiFallback: {
+			disableDotRule: false,
+		},
+		static: path.resolve(__dirname, "dist"),
 		open: false,
 		headers: {
 			"Access-Control-Allow-Origin": "*",
@@ -76,5 +82,22 @@ module.exports = {
 					"./src/features/Products/components/ProductHero.tsx",
 			},
 		}),
+		new FederatedTypesPlugin({
+			federationConfig: {
+				name: "products",
+				filename: "remoteEntry.js",
+				exposes: {
+					"./ProductHero":
+						"./src/features/Products/components/ProductHero.tsx",
+				},
+			},
+		}),
 	],
 };
+
+config.infrastructureLogging = {
+	level: "verbose",
+	colors: true,
+};
+
+module.exports = config;

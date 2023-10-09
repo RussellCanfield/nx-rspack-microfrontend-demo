@@ -2,8 +2,9 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { FederatedTypesPlugin } = require("@module-federation/typescript");
 
-module.exports = {
+const config = {
 	entry: {
 		app: "./src/index.tsx",
 	},
@@ -12,6 +13,7 @@ module.exports = {
 		filename: "[name].[contenthash:8].js",
 		chunkFilename: "[name].[contenthash:8].chunk.js",
 		assetModuleFilename: "[name].[hash][ext][query]",
+		clean: true,
 	},
 	mode: "development",
 	resolve: {
@@ -74,5 +76,24 @@ module.exports = {
 				products: "products@http://localhost:3001/remoteEntry.js",
 			},
 		}),
+		new FederatedTypesPlugin({
+			federationConfig: {
+				name: "host",
+				filename: "remoteEntry.js",
+				remotes: {
+					products: "products@http://localhost:3001/remoteEntry.js",
+				},
+			},
+			typeFetchOptions: {
+				shouldRetryOnTypesNotFound: true,
+			},
+		}),
 	],
 };
+
+config.infrastructureLogging = {
+	level: "verbose",
+	colors: true,
+};
+
+module.exports = config;

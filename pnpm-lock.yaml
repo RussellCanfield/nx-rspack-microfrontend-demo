@@ -42,6 +42,12 @@ importers:
       '@babel/runtime':
         specifier: 7.22.15
         version: 7.22.15
+      '@module-federation/typescript':
+        specifier: 3.0.1
+        version: link:../../../module-federation/universe/dist/packages/typescript
+      '@swc/helpers':
+        specifier: 0.5.3
+        version: 0.5.3
       '@types/react':
         specifier: 18.2.21
         version: 18.2.21
@@ -1605,6 +1611,12 @@ packages:
     resolution: {integrity: sha512-mrfKqIHnSZRyIzBcanNJmVQELTnX+qagEDlcKO90RgRBVOZGSGvZKeDihTRfWcqoDn5N/NkUcwWTccnpN18Tfg==}
     engines: {node: '>=14.0.0'}
     dev: false
+
+  /@swc/helpers@0.5.3:
+    resolution: {integrity: sha512-FaruWX6KdudYloq1AHD/4nU+UsMTdNE8CKyrseXWEcgjDAbvkwJg2QGPAnfIJLIWsjZOSPLOAykK6fuYp4vp4A==}
+    dependencies:
+      tslib: 2.6.2
+    dev: true
 
   /@types/body-parser@1.19.2:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}

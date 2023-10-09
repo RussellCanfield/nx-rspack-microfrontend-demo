@@ -6,7 +6,8 @@
 		"email": "rcanfield86@gmail.com"
 	},
 	"scripts": {
-		"start": "webpack serve"
+		"start": "webpack serve",
+		"build": "webpack"
 	},
 	"license": "MIT",
 	"devDependencies": {
