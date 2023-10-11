@@ -75,17 +75,23 @@ const config = {
 			remotes: {
 				products: "products@http://localhost:3001/remoteEntry.js",
 			},
+			exposes: {
+				"./Navbar": "./src/features/Navbar/components/Navbar.tsx",
+			},
 		}),
 		new FederatedTypesPlugin({
 			federationConfig: {
 				name: "host",
-				filename: "remoteEntry.js",
 				remotes: {
-					products: "products@http://localhost:3001/remoteEntry.js",
+					products: "products@http://localhost:10001",
+				},
+				exposes: {
+					"./Navbar": "./src/features/Navbar/components/Navbar.tsx",
 				},
 			},
-			typeFetchOptions: {
-				shouldRetryOnTypesNotFound: true,
+			typeServeOptions: {
+				host: "localhost",
+				port: 10000,
 			},
 		}),
 	],

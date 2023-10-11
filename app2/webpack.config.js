@@ -85,11 +85,17 @@ const config = {
 		new FederatedTypesPlugin({
 			federationConfig: {
 				name: "products",
-				filename: "remoteEntry.js",
+				remotes: {
+					host: "host@http://localhost:10000",
+				},
 				exposes: {
 					"./ProductHero":
 						"./src/features/Products/components/ProductHero.tsx",
 				},
+			},
+			typeServeOptions: {
+				host: "localhost",
+				port: 10001,
 			},
 		}),
 	],
