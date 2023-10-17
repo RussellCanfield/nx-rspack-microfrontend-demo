@@ -38,19 +38,14 @@ export const useCartQuery = () => {
 
 export const useProducts = () => {
   return useMutation({
-    mutationFn: () => Promise.resolve(),
-    onSuccess: () => {
-      queryClient.setQueryData(
-        ['products'],
-        [{ id: new Date().getTime(), name: 'test' }]
-      );
+    mutationFn: (product: unknown) => Promise.resolve(product),
+    onSuccess: (data: unknown) => {
+      queryClient.setQueryData(['products'], [data]);
     },
     mutationKey: ['addProduct'],
     context,
   });
 };
-
-console.log(context);
 
 export const CartDataProvider = ({
   children,

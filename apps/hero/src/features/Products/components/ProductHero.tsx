@@ -1,49 +1,33 @@
 import {
-  CartDataProvider,
   useCartQuery,
   useGlobalSync,
   useProducts,
+  CartDataProvider,
 } from '@mfe-monorepo/shared-state';
 import styles from './ProductHero.module.css';
-import { useState, useContext } from 'react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 
-const ProductContext = React.createContext<{
-  products: unknown[];
-}>({
-  products: [],
-});
-
 const RemoteWrapper = () => {
-  const { store } = useGlobalSync();
+  //const { store } = useGlobalSync();
 
   return (
-    <ProductContext.Provider value={{ products: store.products }}>
-      <QueryClientProvider
-        //@ts-ignore
-        client={window.REACT_QUERY_CLIENT}
-        //@ts-ignore
-        context={window.REACT_QUERY_CONTEXT}
-      >
-        <ProductHero />
-      </QueryClientProvider>
-    </ProductContext.Provider>
+    <CartDataProvider>
+      <ProductHero />
+    </CartDataProvider>
   );
 };
 
 const ProductHero = () => {
   //const [products, setProducts] = useState([]);
-  const { store, addProduct } = useGlobalSync();
+  //const { store, addProduct } = useGlobalSync();
 
   const query = useCartQuery();
   const test = useProducts();
 
   //console.log(query.data);
 
-  const productcontext = useContext(ProductContext);
-
-  console.log(productcontext.products);
+  console.log(query.data);
 
   return (
     <section className={styles['product-hero']} id="product-hero">
@@ -55,11 +39,11 @@ const ProductHero = () => {
               styles['product-hero__wrapper__text__container__caption']
             }
           >
-            Unless, you know, it isn't. {store.products.length}
+            Unless, you know, it isn't. {query.data?.length}
             <button
               type="button"
               onClick={() => {
-                test.mutate();
+                test.mutate({ id: new Date().getTime(), name: 'test' });
               }}
             >
               Test

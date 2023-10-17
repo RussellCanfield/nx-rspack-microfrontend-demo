@@ -52,16 +52,14 @@ const ProductContext = createContext<{
 export { ProductContext };
 
 const App = () => {
-  const { store } = useGlobalSync();
+  //const { store } = useGlobalSync();
 
   return (
-    <ProductContext.Provider value={{ products: store.products as Product[] }}>
-      <CartDataProvider>
-        <Provider>
-          <RouterProvider router={router} />
-        </Provider>
-      </CartDataProvider>
-    </ProductContext.Provider>
+    <CartDataProvider>
+      <Provider>
+        <RouterProvider router={router} />
+      </Provider>
+    </CartDataProvider>
   );
 };
 

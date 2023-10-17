@@ -1,24 +1,15 @@
 import styles from './Carousel.module.css';
 import { ProductSaleData } from '../../../data/ProductData';
 import ProductCard from './ProductCard';
-import {
-  useGlobalSync,
-  useCartQuery,
-  useProducts,
-} from '@mfe-monorepo/shared-state';
-import { useContext } from 'react';
-import { ProductContext } from '../../../App';
+import { useCartQuery, useProducts } from '@mfe-monorepo/shared-state';
 
 const ProductCarousel = () => {
-  const { store, addProduct } = useGlobalSync();
+  //const { store, addProduct } = useGlobalSync();
 
   const test = useProducts();
-
   const query = useCartQuery();
 
-  const productcontext = useContext(ProductContext);
-
-  console.log(productcontext.products);
+  console.log(query.data);
 
   return (
     <ul className={styles['product-carousel']}>
@@ -28,8 +19,7 @@ const ProductCarousel = () => {
             <button
               type="button"
               onClick={() => {
-                addProduct(product);
-                //test.mutate();
+                test.mutate(product);
               }}
             >
               Add to Cart
