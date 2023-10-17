@@ -12,6 +12,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.15.0",
+    "@tanstack/react-query": "4.36.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

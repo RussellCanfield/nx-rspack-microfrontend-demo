@@ -34,5 +34,21 @@ module.exports = {
         requiredVersion: '18.2.0',
       },
     },
+    {
+      libraryName: '@mfe-monorepo/shared-state',
+      sharedConfig: {
+        eager: false,
+        singleton: true,
+        requiredVersion: false,
+      },
+    },
+    {
+      libraryName: '@tanstack/react-query',
+      sharedConfig: {
+        eager: false,
+        singleton: true,
+        requiredVersion: false,
+      },
+    },
   ],
 };

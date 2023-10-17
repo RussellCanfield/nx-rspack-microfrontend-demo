@@ -6,7 +6,8 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "paths": {
-      "*": ["apps/mfe-monorepo/@mf-types/*"]
+      "*": ["apps/mfe-monorepo/@mf-types/*"],
+      "@mfe-monorepo/shared-state": ["packages/shared-state/src/index.ts"]
     }
   },
   "files": [],

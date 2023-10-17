@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mfe-monorepo/shared": ["packages/shared/src/index.ts"]
+      "@mfe-monorepo/shared-state": ["packages/shared-state/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "dist"]
