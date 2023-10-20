@@ -81,6 +81,9 @@ const config = {
 				"./ProductHero":
 					"./src/features/Products/components/ProductHero.tsx",
 			},
+			shared: {
+				react: { singleton: true, requiredVersion: "18.2.0" },
+			},
 		}),
 		new FederatedTypesPlugin({
 			federationConfig: {

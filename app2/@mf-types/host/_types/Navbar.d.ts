@@ -1,3 +1,2 @@
-/// <reference types="react" />
-declare const Navbar: () => import("React").JSX.Element;
+declare const Navbar: () => import("react/jsx-runtime").JSX.Element;
 export default Navbar;

@@ -72,11 +72,11 @@ const config = {
 		}),
 		new ModuleFederationPlugin({
 			name: "host",
-			remotes: {
-				products: "products@http://localhost:3001/remoteEntry.js",
-			},
 			exposes: {
 				"./Navbar": "./src/features/Navbar/components/Navbar.tsx",
+			},
+			shared: {
+				react: { singleton: true, requiredVersion: "18.2.0" },
 			},
 		}),
 		new FederatedTypesPlugin({
