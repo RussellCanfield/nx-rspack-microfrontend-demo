@@ -2,6 +2,7 @@ const { composePlugins, withNx } = require('@nx/webpack');
 const { withReact } = require('@nx/react');
 const { withModuleFederation } = require('@nx/react/module-federation');
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const moduleFederationConfig = require('./module-federation.config');
 
@@ -22,8 +23,12 @@ module.exports = composePlugins(
           ...moduleFederationConfig,
           filename: 'remoteEntry.js',
           remotes: {
-            hero: 'hero@http://localhost:3001/remoteEntry.js',
+            hero: 'hero@http://localhost:10001',
           },
+        },
+        typeServeOptions: {
+          host: 'localhost',
+          port: 10000,
         },
       })
     );

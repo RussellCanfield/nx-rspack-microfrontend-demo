@@ -6,6 +6,9 @@
 module.exports = {
   name: 'mfe-monorepo',
   remotes: ['hero'],
+  exposes: {
+    './Navbar': './src/app/Features/Navbar/components/Navbar.tsx',
+  },
   shared: (name, config) => {
     return false;
   },

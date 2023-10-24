@@ -2,6 +2,7 @@ const { composePlugins, withNx } = require('@nx/webpack');
 const { withReact } = require('@nx/react');
 const { withModuleFederation } = require('@nx/react/module-federation');
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const moduleFederationConfig = require('./module-federation.config');
 
@@ -17,6 +18,12 @@ module.exports = composePlugins(
           ...moduleFederationConfig,
           filename: 'remoteEntry.js',
         },
+      })
+    );
+
+    config.plugins.push(
+      new CopyPlugin({
+        patterns: [{ from: './src/utils/worker.js', to: 'worker.js' }],
       })
     );
 
