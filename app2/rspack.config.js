@@ -29,6 +29,9 @@ const config = defineConfig({
 		port: 3001,
 		static: path.resolve(__dirname, "dist"),
 		open: false,
+		historyApiFallback: {
+			disableDotRule: true,
+		},
 		headers: {
 			"Access-Control-Allow-Origin": "*",
 			"Access-Control-Allow-Methods": "*",
