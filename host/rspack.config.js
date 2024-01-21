@@ -3,7 +3,10 @@
 const { defineConfig } = require("@rspack/cli");
 const { rspack, container } = require("@rspack/core");
 const { ModuleFederationPlugin } = container;
-const { FederatedTypesPlugin } = require("@module-federation/typescript");
+const {
+	NativeFederationTypeScriptHost,
+	NativeFederationTypeScriptRemote,
+} = require("@module-federation/native-federation-typescript");
 const ReactRefreshPlugin = require("@rspack/plugin-react-refresh");
 const path = require("path");
 
@@ -118,23 +121,28 @@ const config = defineConfig({
 			},
 		}),
 		new ReactRefreshPlugin(),
-		//@ts-ignore
-		// new FederatedTypesPlugin({
-		// 	federationConfig: {
-		// 		name: "products",
-		// 		remotes: {
-		// 			host: "host@http://localhost:10000",
-		// 		},
-		// 		exposes: {
-		// 			"./ProductHero":
-		// 				"./src/features/Products/components/ProductHero.tsx",
-		// 		},
-		// 	},
-		// 	typeServeOptions: {
-		// 		host: "localhost",
-		// 		port: 10001,
-		// 	},
-		// }),
+		NativeFederationTypeScriptRemote.rspack({
+			moduleFederationConfig: {
+				name: "host",
+				remotes: {
+					products: "products@http://localhost:3001",
+				},
+				exposes: {
+					"./Navbar": "./src/features/Navbar/components/Navbar.tsx",
+				},
+			},
+		}),
+		NativeFederationTypeScriptHost.rspack({
+			moduleFederationConfig: {
+				name: "host",
+				remotes: {
+					products: "products@http://localhost:3001",
+				},
+				exposes: {
+					"./Navbar": "./src/features/Navbar/components/Navbar.tsx",
+				},
+			},
+		}),
 	],
 });
 
