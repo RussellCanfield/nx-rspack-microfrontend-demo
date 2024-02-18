@@ -3,7 +3,7 @@ import styles from "./Home.module.css";
 import useScreenSize from "../../Products/hooks/useScreenSize";
 import { ComponentType, Suspense } from "react";
 import React from "react";
-import { loadRemote } from "@module-federation/runtime/.";
+import { loadRemote } from "@module-federation/runtime";
 
 const ProductHero = React.lazy(() => {
 	const promise = loadRemote("products/ProductHero");

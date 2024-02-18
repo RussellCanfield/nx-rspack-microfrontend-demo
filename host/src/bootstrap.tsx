@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
-import { init } from "@module-federation/runtime/.";
+import { init } from "@module-federation/runtime";
 
 const appElement = document.getElementById("app");
 
