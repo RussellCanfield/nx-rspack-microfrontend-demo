@@ -11,8 +11,9 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
-		"@rspack/cli": "0.5.1",
-		"@rspack/core": "0.5.1",
+		"@rspack/cli": "0.5.4",
+		"@rspack/core": "0.5.4",
+		"@rspack/plugin-react-refresh": "^0.5.4",
 		"@babel/core": "7.22.17",
 		"@babel/plugin-transform-runtime": "7.22.15",
 		"@babel/preset-env": "7.22.15",
@@ -27,7 +28,6 @@
 		"style-loader": "3.3.0",
 		"typescript": "5.2.2",
 		"typescript-plugin-css-modules": "5.0.1",
-		"@rspack/plugin-react-refresh": "^0.5.1",
 		"@types/react": "18.2.21",
 		"@types/react-dom": "18.2.7",
 		"react-refresh": "^0.14.0",
@@ -40,6 +40,7 @@
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-router-dom": "6.15.0",
-		"jotai": "2.4.2"
+		"jotai": "2.6.4",
+		"@module-federation/runtime": "0.0.13"
 	}
 }

@@ -26,7 +26,7 @@ const config = defineConfig({
 		extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
 	},
 	devServer: {
-		port: 3001,
+		port: 4001,
 		static: path.resolve(__dirname, "dist"),
 		open: false,
 		historyApiFallback: {
@@ -123,6 +123,12 @@ const config = defineConfig({
 			},
 			shared: {
 				react: { singleton: true, requiredVersion: "18.2.0" },
+				"react-dom": { singleton: true, requiredVersion: "18.2.0" },
+				"react-router-dom": {
+					singleton: true,
+					requiredVersion: "18.2.0",
+				},
+				"@heroicons/react": { singleton: true },
 			},
 		}),
 		new ReactRefreshPlugin(),
@@ -130,7 +136,7 @@ const config = defineConfig({
 			moduleFederationConfig: {
 				name: "products",
 				remotes: {
-					host: "host@http://localhost:3000",
+					host: "host@http://localhost:4000",
 				},
 				exposes: {
 					"./ProductHero":
@@ -142,7 +148,7 @@ const config = defineConfig({
 			moduleFederationConfig: {
 				name: "products",
 				remotes: {
-					host: "host@http://localhost:3000",
+					host: "host@http://localhost:4000",
 				},
 				exposes: {
 					"./ProductHero":

@@ -1,16 +1,13 @@
 import { ProductsOnSale } from "../../Products";
 import styles from "./Home.module.css";
 import useScreenSize from "../../Products/hooks/useScreenSize";
-import { Suspense } from "react";
+import { ComponentType, Suspense } from "react";
 import React from "react";
-import importDynamicRemote from "../../../utils/importDynamicRemote";
+import { loadRemote } from "@module-federation/runtime/.";
 
 const ProductHero = React.lazy(() => {
-	return importDynamicRemote({
-		getUrl: () => Promise.resolve("http://localhost:3001/remoteEntry.js"),
-		scope: "products",
-		module: "./ProductHero",
-	});
+	const promise = loadRemote("products/ProductHero");
+	return promise as Promise<{ default: ComponentType<any> }>;
 });
 
 const bodyElement = document.querySelector("body")!;

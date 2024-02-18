@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Home } from "./features/Home";
 import { lazy, Suspense } from "react";
 import { Navbar } from "./features/Navbar";
+import { init } from "@module-federation/runtime";
 
 const Products = lazy(() => import("./features/Products/components/Products"));
 const Cart = lazy(() => import("./features/Cart/components/Cart"));

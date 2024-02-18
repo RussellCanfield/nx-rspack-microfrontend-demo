@@ -26,7 +26,7 @@ const config = defineConfig({
 		extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
 	},
 	devServer: {
-		port: 3000,
+		port: 4000,
 		static: path.resolve(__dirname, "dist"),
 		open: false,
 		historyApiFallback: {
@@ -119,8 +119,15 @@ const config = defineConfig({
 			exposes: {
 				"./Navbar": "./src/features/Navbar/components/Navbar.tsx",
 			},
+			runtimePlugins: [require.resolve("./share-monitor-plugin.ts")],
 			shared: {
 				react: { singleton: true, requiredVersion: "18.2.0" },
+				"react-dom": { singleton: true, requiredVersion: "18.2.0" },
+				"react-router-dom": {
+					singleton: true,
+					requiredVersion: "18.2.0",
+				},
+				"@heroicons/react": { singleton: true },
 			},
 		}),
 		new ReactRefreshPlugin(),
@@ -128,7 +135,7 @@ const config = defineConfig({
 			moduleFederationConfig: {
 				name: "host",
 				remotes: {
-					products: "products@http://localhost:3001",
+					products: "products@http://localhost:4001",
 				},
 				exposes: {
 					"./Navbar": "./src/features/Navbar/components/Navbar.tsx",
@@ -139,7 +146,7 @@ const config = defineConfig({
 			moduleFederationConfig: {
 				name: "host",
 				remotes: {
-					products: "products@http://localhost:3001",
+					products: "products@http://localhost:4001",
 				},
 				exposes: {
 					"./Navbar": "./src/features/Navbar/components/Navbar.tsx",
