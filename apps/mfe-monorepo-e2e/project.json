@@ -2,6 +2,7 @@
   "name": "mfe-monorepo-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/mfe-monorepo-e2e/src",
+  "implicitDependencies": ["mfe-monorepo"],
   "targets": {
     "e2e": {
       "executor": "@nx/playwright:playwright",
@@ -11,12 +12,8 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/mfe-monorepo-e2e/**/*.{js,ts}"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     }
-  },
-  "implicitDependencies": ["mfe-monorepo"]
+  }
 }
