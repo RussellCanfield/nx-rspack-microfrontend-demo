@@ -1,2 +1,2 @@
-export * from './_types/apps/hero/src/features/Products/components/ProductHero';
-export { default } from './_types/apps/hero/src/features/Products/components/ProductHero';
+export * from './compiled-types/apps/hero/src/features/Products/components/ProductHero';
+export { default } from './compiled-types/apps/hero/src/features/Products/components/ProductHero';

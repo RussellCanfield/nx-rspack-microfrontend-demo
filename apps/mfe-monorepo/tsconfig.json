@@ -5,8 +5,9 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "baseUrl": "./",
     "paths": {
-      "*": ["apps/mfe-monorepo/@mf-types/*"]
+      "*": ["./@mf-types/*"],
     }
   },
   "files": [],
@@ -14,9 +15,6 @@
   "references": [
     {
       "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
     }
   ],
   "extends": "../../tsconfig.base.json"

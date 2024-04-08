@@ -1,25 +1,11 @@
 import { useEffect, useState } from 'react';
 import styles from './ProductHero.module.css';
-import { createWorker } from 'apps/hero/src/utils/createWorker';
 
 declare global {
   const __webpack_public_path__: string;
 }
 
-const ProductHero = () => {
-  const [worker, setWorker] = useState<Worker | null>(null);
-
-  useEffect(() => {
-    async function loadWorker() {
-      const worker = await createWorker(__webpack_public_path__ + 'worker.js');
-      setWorker(worker);
-    }
-
-    loadWorker();
-  }, []);
-
-  if (!worker) return <></>;
-
+const ProductHero = ({ label }: { label: string }) => {
   return (
     <section className={styles['product-hero']} id="product-hero">
       <div className={styles['product-hero__wrapper']}>
@@ -41,7 +27,6 @@ const ProductHero = () => {
         <img
           src="./assets/WhiteShirt.png"
           alt="White T-shirt"
-          onClick={() => worker.postMessage('Hello world!')}
           className={styles['product-hero__wrapper__image__shirt']}
         />
       </div>

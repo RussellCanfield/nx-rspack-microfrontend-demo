@@ -6,60 +6,37 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/webpack:webpack",
+      "executor": "@nx/rspack:rspack",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "development",
+      "defaultConfiguration": "production",
       "options": {
-        "compiler": "babel",
+        "target": "web",
         "outputPath": "dist/apps/hero",
-        "index": "apps/hero/src/index.html",
-        "baseHref": "/",
-        "main": "apps/hero/src/index.tsx",
+        "main": "apps/hero/src/main.ts",
         "tsConfig": "apps/hero/tsconfig.app.json",
-        "assets": ["apps/hero/src/favicon.ico", "apps/hero/src/assets"],
-        "styles": ["apps/hero/src/index.css"],
-        "scripts": [],
-        "isolatedConfig": true,
-        "webpackConfig": "apps/hero/webpack.config.js"
+        "rspackConfig": "apps/hero/rspack.config.js",
+        "assets": ["apps/hero/src/favicon.ico", "apps/hero/src/assets"]
       },
       "configurations": {
         "development": {
-          "extractLicenses": false,
-          "optimization": false,
-          "sourceMap": true,
-          "vendorChunk": true
+          "mode": "development"
         },
         "production": {
-          "fileReplacements": [
-            {
-              "replace": "apps/hero/src/environments/environment.ts",
-              "with": "apps/hero/src/environments/environment.prod.ts"
-            }
-          ],
+          "mode": "production",
           "optimization": true,
-          "outputHashing": "all",
-          "sourceMap": false,
-          "namedChunks": false,
-          "extractLicenses": true,
-          "vendorChunk": false
+          "sourceMap": false
         }
       }
     },
     "serve": {
-      "executor": "@nx/webpack:dev-server",
-      "defaultConfiguration": "development",
+      "executor": "@nx/rspack:dev-server",
       "options": {
-        "buildTarget": "hero:build",
-        "hmr": true,
-        "port": 3001
+        "buildTarget": "hero:build:development"
       },
       "configurations": {
-        "development": {
-          "buildTarget": "hero:build:development"
-        },
+        "development": {},
         "production": {
-          "buildTarget": "hero:build:production",
-          "hmr": false
+          "buildTarget": "hero:build:production"
         }
       }
     },

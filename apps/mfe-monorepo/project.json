@@ -7,63 +7,40 @@
   "implicitDependencies": ["hero"],
   "targets": {
     "build": {
-      "executor": "@nx/webpack:webpack",
+      "executor": "@nx/rspack:rspack",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "development",
+      "defaultConfiguration": "production",
       "options": {
-        "compiler": "babel",
+        "target": "web",
         "outputPath": "dist/apps/mfe-monorepo",
-        "index": "apps/mfe-monorepo/src/index.html",
-        "baseHref": "/",
-        "main": "apps/mfe-monorepo/src/index.tsx",
+        "main": "apps/mfe-monorepo/src/main.ts",
         "tsConfig": "apps/mfe-monorepo/tsconfig.app.json",
+        "rspackConfig": "apps/mfe-monorepo/rspack.config.js",
         "assets": [
           "apps/mfe-monorepo/src/favicon.ico",
           "apps/mfe-monorepo/src/assets"
-        ],
-        "styles": ["apps/mfe-monorepo/src/index.css"],
-        "scripts": [],
-        "isolatedConfig": true,
-        "webpackConfig": "apps/mfe-monorepo/webpack.config.js"
+        ]
       },
       "configurations": {
         "development": {
-          "extractLicenses": false,
-          "optimization": false,
-          "sourceMap": true,
-          "vendorChunk": true
+          "mode": "development"
         },
         "production": {
-          "fileReplacements": [
-            {
-              "replace": "apps/mfe-monorepo/src/environments/environment.ts",
-              "with": "apps/mfe-monorepo/src/environments/environment.prod.ts"
-            }
-          ],
+          "mode": "production",
           "optimization": true,
-          "outputHashing": "all",
-          "sourceMap": false,
-          "namedChunks": false,
-          "extractLicenses": true,
-          "vendorChunk": false
+          "sourceMap": false
         }
       }
     },
     "serve": {
-      "executor": "@nx/react:module-federation-dev-server",
-      "defaultConfiguration": "development",
+      "executor": "@nx/rspack:dev-server",
       "options": {
-        "buildTarget": "mfe-monorepo:build",
-        "hmr": true,
-        "devRemotes": ["hero"]
+        "buildTarget": "mfe-monorepo:build:development"
       },
       "configurations": {
-        "development": {
-          "buildTarget": "mfe-monorepo:build:development"
-        },
+        "development": {},
         "production": {
-          "buildTarget": "mfe-monorepo:build:production",
-          "hmr": false
+          "buildTarget": "mfe-monorepo:build:production"
         }
       }
     },
