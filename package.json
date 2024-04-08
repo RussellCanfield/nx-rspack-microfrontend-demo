@@ -2,7 +2,9 @@
   "name": "@mfe-monorepo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx run-many -t serve -p hero mfe-monorepo"
+  },
   "private": true,
   "dependencies": {
     "@heroicons/react": "2.0.18",

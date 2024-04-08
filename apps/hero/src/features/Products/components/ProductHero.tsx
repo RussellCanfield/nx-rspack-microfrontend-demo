@@ -5,7 +5,7 @@ declare global {
   const __webpack_public_path__: string;
 }
 
-const ProductHero = ({ label }: { label: string }) => {
+const ProductHero = ({ label }: { label?: string }) => {
   return (
     <section className={styles['product-hero']} id="product-hero">
       <div className={styles['product-hero__wrapper']}>
@@ -17,6 +17,7 @@ const ProductHero = ({ label }: { label: string }) => {
             }
           >
             Unless, you know, it isn't.
+            {label ?? ''}
           </p>
         </div>
         <img
