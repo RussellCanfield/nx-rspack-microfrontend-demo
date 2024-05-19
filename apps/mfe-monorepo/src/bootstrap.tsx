@@ -14,9 +14,7 @@ init({
   ],
   plugins: [dynamicplugin()],
 });
-    beforePreloadRemote(request) {
 
-    },
 preloadRemote([
   {
     nameOrAlias: 'hero',
