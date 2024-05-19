@@ -8,5 +8,6 @@ module.exports = {
   filename: 'remoteEntry.js',
   exposes: {
     './ProductHero': './src/features/Products/components/ProductHero.tsx',
+    './Widget': './src/features/Products/components/Widget.tsx',
   },
 };

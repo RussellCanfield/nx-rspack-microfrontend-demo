@@ -1,6 +1,15 @@
 import { ProductCard } from '../../Products';
 import styles from './Cart.module.css';
 import useCart from '../hooks/useCart';
+import WidgetType from 'hero/Widget';
+import { lazy } from 'react';
+import { loadRemote } from '@module-federation/enhanced/runtime';
+
+const Widget = lazy(() => {
+  return loadRemote<{ default: typeof WidgetType }>('hero/Widget', {
+    from: 'runtime',
+  }) as Promise<{ default: typeof WidgetType }>;
+});
 
 const Cart = () => {
   const { cart, removeFromCart } = useCart();
@@ -10,7 +19,11 @@ const Cart = () => {
   }, 0);
 
   if (!cart.products.length) {
-    return <h3>Sorry your cart is currently empty.</h3>;
+    return (
+      <h3>
+        <Widget /> Sorry your cart is currently empty.
+      </h3>
+    );
   }
 
   return (

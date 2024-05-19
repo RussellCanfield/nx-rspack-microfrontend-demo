@@ -1,11 +1,8 @@
 // @ts-check
 
 /**
- * @type {import('@nrwl/devkit').ModuleFederationConfig}
+ * @type {import('@module-federation/sdk').moduleFederationPlugin.ModuleFederationPluginOptions}
  **/
 module.exports = {
   name: 'mfe_monorepo',
-  remotes: {
-    hero: 'hero@http://localhost:3001/remoteEntry.js',
-  },
 };
