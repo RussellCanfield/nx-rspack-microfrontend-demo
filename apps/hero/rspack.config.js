@@ -1,4 +1,5 @@
 const { composePlugins, withNx, withReact } = require('@nx/rspack');
+
 const {
   ModuleFederationPlugin,
 } = require('@module-federation/enhanced/rspack');
@@ -10,9 +11,14 @@ module.exports = composePlugins(withNx(), withReact(), (config, context) => {
 
   config.plugins.push(new ModuleFederationPlugin({ ...mfConfig }));
   config.output.publicPath = 'auto';
+  config.module.parser = {
+    'css/module': {
+      namedExports: false,
+    },
+  };
+
   config.devServer = {
     ...config.devServer,
-    port: 3001,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
@@ -20,6 +26,7 @@ module.exports = composePlugins(withNx(), withReact(), (config, context) => {
         'X-Requested-With, content-type, Authorization',
     },
   };
+
 
   return config;
 });

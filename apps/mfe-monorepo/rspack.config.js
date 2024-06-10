@@ -10,9 +10,14 @@ module.exports = composePlugins(withNx(), withReact(), (config, context) => {
 
   config.plugins.push(new ModuleFederationPlugin({ ...mfConfig }));
   config.output.publicPath = '/';
+
+  config.module.parser = {
+    'css/module': {
+      namedExports: false,
+    },
+  };
   config.devServer = {
     ...config.devServer,
-    port: 4200,
   };
 
   return config;
