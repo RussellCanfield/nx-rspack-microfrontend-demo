@@ -11,3 +11,4 @@ module.exports = {
     './Widget': './src/features/Products/components/Widget.tsx',
   },
 };
+
