@@ -6,21 +6,8 @@ import dynamicplugin from './dynamic-loader-plugin';
 
 init({
   name: 'mfe_monorepo',
-  remotes: [
-    {
-      name: 'hero',
-      entry: '',
-    },
-  ],
-  plugins: [dynamicplugin()],
+  remotes: [],
 });
-
-preloadRemote([
-  {
-    nameOrAlias: 'hero',
-    exposes: ['Widget'],
-  },
-]);
 
 const appElement = document.getElementById('app');
 

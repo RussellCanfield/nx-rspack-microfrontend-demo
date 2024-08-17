@@ -16,6 +16,10 @@ const runtimePlugin: () => FederationRuntimePlugin = function () {
 
       return args;
     },
+    async afterPreloadRemote(args) {
+      console.log(args);
+      return args;
+    },
     async beforeRequest({ id, options, origin }) {
       const [scope] = id.split('/');
 
